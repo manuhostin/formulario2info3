@@ -1,47 +1,50 @@
 <script setup>
 import { reactive, ref } from 'vue'
 
-const titulo = ref('Título')
 const mostrarResultado = ref(false) 
-const produto = reactive({
-  nome: 'produto 1',
-  preco : 0 ,
-  quantidade : 10,
+const usuario = reactive({
+  nome: '',
+  email : '' ,
+  senha : '' ,
+  confirmarsenha : '' ,
+  datadenascimento : '',
   categorias : []
 })
-function formatarpreco (preco) {
-  return `R$ ${preco.toFixed(2).replace('.', '.')}`
-}
 </script>
 
 <template>
-  <h1>{{ titulo }}</h1>
   <div class="container">
     <div class="formulario">
       <h1>Formulario</h1>
-      <input type="text" v-model="titulo">
       <form @submit.prevent="mostrarResultado = !mostrarResultado">
       <div class="row">
         <label for="">Nome:</label>
-        <input type="text" v-model="produto.nome" required >
+        <input type="text" v-model="usuario.nome" required >
       </div>
       <div class="row">
-        <label for="">Preco:</label>
-        <input type="number" v-model="produto.preco"/>
+        <label for="">Email:</label>
+        <input type="email" v-model="usuario.email"/>
       </div>
       <div class="row">
-        <label for="">Quantidade:</label>
-        <input type="number" v-model="produto.quantidade"/>
+        <label for="">Senha:</label>
+        <input type="password" v-model="usuario.senha"/>
+      </div>
+      <div class="row">
+        <label for="">Confirmar Senha:</label>
+        <input type="password" v-model="usuario.confirmarsenha"/>
       </div>
       <button type="submit">Mostrar</button>
     </form>
     </div>
+    <div class="row">
+        <label for="">Data de Nascimento:</label>
+        <input type="text" v-model="usuario.datadenascimento" required >
+      </div>
     <div v-if="mostrarResultado" class="resultado">
       <h1>Resultado</h1>
-      <p>Nome: {{ produto.nome }}</p>
-      <p>preco: {{ formatarpreco(produto.preco) }}</p>
-      <p>quantidade: {{ produto.quantidade }}</p>
-      <p>categorias: {{ produto.categorias }}</p>
+      <p>Nome: {{ usuario.nome }}</p>
+      <p>quantidade: {{ usuario.senha }}</p>
+      <p>categorias: {{ usuario.categorias }}</p>
       <P> {{ mostrarResultado }}</P>
     </div>
   </div>
