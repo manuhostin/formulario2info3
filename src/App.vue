@@ -10,7 +10,7 @@ const usuario = reactive({
   datadenascimento : '',
   cidade : '',
   estado : '',
-  hobby :'',
+  hobby : [],
   linguagens : '',
   biografia : '' 
 })
@@ -80,13 +80,18 @@ const estados = [
             </select>
       </div>
       <div class="row">
-        <label for="">Hobbies:</label>
-        <select v-model = "usuario.estado" required>
-              <option selected disabled value="">Selecionar...</option>
-              <option v-for="estado of estados" :key="estado.uf" :value="estado.uf">
-                {{ estado.name }}
-              </option>
-            </select>
+        <label for = ""> Biografia: </label>
+        <textarea v-model="usuario.biografia"></textarea>
+        {{ biografia.name }}
+      </div>
+      <div class="row">
+        <label for = ""> Hobbies: </label>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
       </div>
       <button type="submit">Mostrar</button>
     </form>
@@ -94,9 +99,11 @@ const estados = [
     <div v-if="mostrarResultado" class="resultado">
       <h1>Resultado</h1>
       <p>Nome: {{ usuario.nome }}</p>
+      <p>Email: {{ usuario.email }}</p>
       <p> Senha: {{ usuario.senha }}</p>
-      <p>categorias: {{ usuario.categorias }}</p>
-      <p>  {{ usuario.categorias }}</p>
+      <p> Estado: {{ usuario.estado }}</p>
+      <p> Estado: {{ usuario.biografia }}</p>
+
     </div>
   </div>
 </template>
