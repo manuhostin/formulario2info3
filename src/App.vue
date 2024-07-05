@@ -8,8 +8,41 @@ const usuario = reactive({
   senha : '' ,
   confirmarsenha : '' ,
   datadenascimento : '',
-  categorias : []
+  cidade : '',
+  estado : '',
+  hobby :'',
+  linguagens : '',
+  biografia : '' 
 })
+const estados = [
+  { uf: 'AC', name: 'Acre' },
+  { uf: 'AL', name: 'Alagoas' },
+  { uf: 'AP', name: 'Amapá' },
+  { uf: 'AM', name: 'Amazonas' },
+  { uf: 'BA', name: 'Bahia' },
+  { uf: 'CE', name: 'Ceará' },
+  { uf: 'DF', name: 'Distrito Federal' },
+  { uf: 'ES', name: 'Espírito Santo' },
+  { uf: 'GO', name: 'Goiás' },
+  { uf: 'MA', name: 'Maranhão' },
+  { uf: 'MT', name: 'Mato Grosso' },
+  { uf: 'MS', name: 'Mato Grosso do Sul' },
+  { uf: 'MG', name: 'Minas Gerais' },
+  { uf: 'PA', name: 'Pará' },
+  { uf: 'PB', name: 'Paraíba' },
+  { uf: 'PR', name: 'Paraná' },
+  { uf: 'PE', name: 'Pernambuco' },
+  { uf: 'PI', name: 'Piauí' },
+  { uf: 'RJ', name: 'Rio de Janeiro' },
+  { uf: 'RN', name: 'Rio Grande do Norte' },
+  { uf: 'RS', name: 'Rio Grande do Sul' },
+  { uf: 'RO', name: 'Rondônia' },
+  { uf: 'RR', name: 'Roraima' },
+  { uf: 'SC', name: 'Santa Catarina' },
+  { uf: 'SP', name: 'São Paulo' },
+  { uf: 'SE', name: 'Sergipe' },
+  { uf: 'TO', name: 'Tocantins' }
+]
 </script>
 
 <template>
@@ -33,19 +66,37 @@ const usuario = reactive({
         <label for="">Confirmar Senha:</label>
         <input type="password" v-model="usuario.confirmarsenha"/>
       </div>
+      <div class="row">
+        <label for="">Data de Nascimento:</label>
+        <input type="date" v-model="usuario.datadenascimento" required >
+      </div>
+      <div class="row">
+        <label for="">Estado:</label>
+        <select v-model = "usuario.estado" required>
+              <option selected disabled value="">Selecionar...</option>
+              <option v-for="estado of estados" :key="estado.uf" :value="estado.uf">
+                {{ estado.name }}
+              </option>
+            </select>
+      </div>
+      <div class="row">
+        <label for="">Hobbies:</label>
+        <select v-model = "usuario.estado" required>
+              <option selected disabled value="">Selecionar...</option>
+              <option v-for="estado of estados" :key="estado.uf" :value="estado.uf">
+                {{ estado.name }}
+              </option>
+            </select>
+      </div>
       <button type="submit">Mostrar</button>
     </form>
     </div>
-    <div class="row">
-        <label for="">Data de Nascimento:</label>
-        <input type="text" v-model="usuario.datadenascimento" required >
-      </div>
     <div v-if="mostrarResultado" class="resultado">
       <h1>Resultado</h1>
       <p>Nome: {{ usuario.nome }}</p>
-      <p>quantidade: {{ usuario.senha }}</p>
+      <p> Senha: {{ usuario.senha }}</p>
       <p>categorias: {{ usuario.categorias }}</p>
-      <P> {{ mostrarResultado }}</P>
+      <p>  {{ usuario.categorias }}</p>
     </div>
   </div>
 </template>
