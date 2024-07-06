@@ -1,7 +1,5 @@
 <script setup>
 import { reactive, ref } from 'vue'
-
-const mostrarResultado = ref(false) 
 const usuario = reactive({
   nome: '',
   email : '' ,
@@ -44,13 +42,24 @@ const estados = [
   { uf: 'SE', name: 'Sergipe' },
   { uf: 'TO', name: 'Tocantins' }
 ]
+const mostrarResultado = ref(false)
+function validar() {
+  let erro = false
+  if (usuario.senha !== usuario.confirmarsenha) {
+        alert("Senhas não batem")
+        erro = true
+    }
+    if (!erro) {
+        mostrarResultado.value = !mostrarResultado.value
+    }
+    }
 </script>
 
 <template>
   <div class="container">
     <div class="formulario">
       <h1>Formulario</h1>
-      <form @submit.prevent="mostrarResultado = !mostrarResultado">
+      <form @submit.prevent="validar">
       <div class="row">
         <label for="">Nome:</label>
         <input type="text" v-model="usuario.nome" required >
