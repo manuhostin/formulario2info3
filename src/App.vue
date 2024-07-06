@@ -8,6 +8,7 @@ const usuario = reactive({
   senha : '' ,
   confirmarsenha : '' ,
   datadenascimento : '',
+  endereco : '',
   cidade : '',
   estado : '',
   hobby : [],
@@ -71,6 +72,14 @@ const estados = [
         <input type="date" v-model="usuario.datadenascimento" required >
       </div>
       <div class="row">
+        <label for="">Endereço:</label>
+        <input type="text" v-model="usuario.endereco" required >
+      </div>
+      <div class="row">
+        <label for="">Cidade:</label>
+        <input type="text" v-model="usuario.cidade" required >
+      </div>
+      <div class="row">
         <label for="">Estado:</label>
         <select v-model = "usuario.estado" required>
               <option selected disabled value="">Selecionar...</option>
@@ -80,19 +89,29 @@ const estados = [
             </select>
       </div>
       <div class="row">
-        <label for = ""> Biografia: </label>
-        <textarea v-model="usuario.biografia"></textarea>
-        {{ biografia.name }}
+        
+        Linguagem:  <input type="radio" id="java" value="java" v-model="usuario.linguagens">
+    <label for="java">Java</label>
+    <input type="radio" id="js" value="js" v-model="usuario.linguagens">
+    <label for="js">Java Script</label>
+    <input type="radio" id="c" value="c" v-model="usuario.linguagens">
+    <label for="c">C</label>
+    <input type="radio" id="python" value="python" v-model="usuario.linguagens">
+    <label for="python">Python</label>
+      </div>
+      <div clas="row">
+        <label for =""> Hobbies </label>
+        <input type="checkbox" id="jogos" value="jogos" v-model="usuario.hobby">
+      <label for="jogos">Jogos</label>
+      <input type="checkbox" id="artes" value="artes" v-model="usuario.hobby">
+      <label for="artes">Artes</label>
+      <input type="checkbox" id="musica" value="musica" v-model="usuario.hobby">
+      <label for="musica">Música</label>
       </div>
       <div class="row">
-        <label for = ""> Hobbies: </label>
-        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-        <label for="jack">Jack</label>
-        <input type="checkbox" id="john" value="John" v-model="checkedNames">
-        <label for="john">John</label>
-        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-        <label for="mike">Mike</label>
-      </div>
+        <label for = ""> Biografia: </label>
+        <textarea v-model="usuario.biografia"></textarea>
+            </div>
       <button type="submit">Mostrar</button>
     </form>
     </div>
@@ -101,9 +120,13 @@ const estados = [
       <p>Nome: {{ usuario.nome }}</p>
       <p>Email: {{ usuario.email }}</p>
       <p> Senha: {{ usuario.senha }}</p>
+      <p> Data de Nascimento: {{ usuario.datadenascimento }}</p>
+      <P> Endereço: {{ usuario.endereco }} </p>
+      <P> Cidade: {{ usuario.cidade }} </p>
       <p> Estado: {{ usuario.estado }}</p>
-      <p> Estado: {{ usuario.biografia }}</p>
-
+      <p> Biografia: {{ usuario.biografia }}</p>
+      <p> Linguagem: {{ usuario.linguagens }}</p>
+      <p> Hobbies: {{ usuario.hobby }} </p>
     </div>
   </div>
 </template>
