@@ -98,16 +98,21 @@ function validar() {
             </select>
       </div>
       <div class="row">
-        
-        Linguagem:  <input type="radio" id="java" value="java" v-model="usuario.linguagens">
+    <p>Linguagem:</p>
+     <div class="language-options">
+    <input type="radio" id="java" value="java" v-model="usuario.linguagens">
     <label for="java">Java</label>
+    
     <input type="radio" id="js" value="js" v-model="usuario.linguagens">
-    <label for="js">Java Script</label>
+    <label for="js">JavaScript</label>
+    
     <input type="radio" id="c" value="c" v-model="usuario.linguagens">
     <label for="c">C</label>
+    
     <input type="radio" id="python" value="python" v-model="usuario.linguagens">
     <label for="python">Python</label>
-      </div>
+  </div>
+</div>
       <div clas="row">
         <label for =""> Hobbies </label>
         <input type="checkbox" id="jogos" value="jogos" v-model="usuario.hobby">
@@ -140,33 +145,97 @@ function validar() {
   </div>
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.container{
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem ;
-  width: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-.formulario, .resultado{
-  width: 45%;
-  border-radius: 10px;
-  padding: 10px;
-}
+ .language-options {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.formulario{
-  background-color: #c4c500;
-}
+  .language-options input[type="radio"] {
+    margin-right: 10px;
+  }
 
-.formulario .row {
-  margin: 10px 0;
-  width: 70%;
-  display: flex;
-  justify-content: space-between ;
-}
-.resultado{
-  background-color: #c4c4c4;
-}
+  .language-options label {
+    margin-right: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
+  .formulario {
+    background-color: #ff67e6;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .formulario h1 {
+    text-align: center;
+    color: #9e0162;
+  }
+
+  .formulario form .row {
+    margin-bottom: 15px;
+  }
+
+  .formulario form .row label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .formulario form .row input[type="text"],
+  .formulario form .row input[type="email"],
+  .formulario form .row input[type="password"],
+  .formulario form .row input[type="date"],
+  .formulario form .row select,
+  .formulario form .row textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ff97fa;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .formulario form .row textarea {
+    height: 100px;
+  }
+
+
+
+  .formulario form button {
+    background-color: #9c0068;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .formulario form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .resultado {
+    background-color: #f8a7ff;
+    padding: 20px;
+  }
+
+  .resultado h1 {
+    text-align: center;
+    color: #a50f80;
+  }
+
+  .resultado p {
+    margin-bottom: 10px;
+  }
 </style>
